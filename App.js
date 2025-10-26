@@ -6,7 +6,7 @@ import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets} from 'react-native-s
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native'; 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { FontAwesome, AntDesign } from '@expo/vector-icons';
+import { FontAwesome, FontAwesome6, MaterialIcons, AntDesign } from '@expo/vector-icons';
 
 import TecnologiaScreen from './src/tecnologia';
 import EsportesScreen from './src/esportes';
@@ -42,9 +42,21 @@ function NoticiasTabNavigator() {
     <Tab.Navigator
       screenOptions={{ headerShown: false }} 
     >
-      <Tab.Screen name="Tecnologia" component={TecnologiaScreen} />
+      <Tab.Screen 
+        name="Tecnologia" 
+        component={TecnologiaScreen} 
+        options={{
+          tabBarIcon: ({color, size}) => (<FontAwesome6 name="computer" size={size} color={color}/>)
+        }} 
+      />
 
-      <Tab.Screen name="Esportes" component={EsportesScreen} />
+      <Tab.Screen 
+        name="Esportes" 
+        component={EsportesScreen}
+        options={{
+          tabBarIcon: ({color, size}) => (<MaterialIcons name="sports-football" size={size} color={color}/>)
+        }}
+      />
       
     </Tab.Navigator>
   );
