@@ -30,7 +30,7 @@ function SobreScreen({ navigation }) {
           React Native:
           - Drawer (raiz)
           - Tabs (Tecnologia/Esportes)
-          - Stacks (Lista => Detalhes)
+          - Stacks (Lista ➜ Detalhes)
         </Text>
         <View style={{ flex: 1, justifyContent: 'flex-end' }}>
           <Button
