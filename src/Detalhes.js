@@ -7,7 +7,7 @@ export default function Detalhes ({ route, navigation }) {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            tittle: noticia.titulo,
+            title: noticia.titulo,
         });
     }, [navigation, noticia]);
 

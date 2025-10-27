@@ -49,7 +49,7 @@ function TecnologiaStack() {
         options ={{ title: 'Tecnologia' }}
       />
       <Stack.Screen
-        name="DetalheNoticia"
+        name="Detalhes"
         component={Detalhes}
       />
     </Stack.Navigator>
@@ -65,7 +65,7 @@ function EsportesStack() {
         options ={{ title: 'Esportes' }}
       />
       <Stack.Screen
-        name="DetalheNoticia"
+        name="Detalhes"
         component={Detalhes}
       />
     </Stack.Navigator>
