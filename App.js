@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native'; 
@@ -13,10 +13,32 @@ import TecnologiaScreen from './src/tecnologia';
 import EsportesScreen from './src/esportes';
 import Detalhes from './src/Detalhes';
 
-function SobreScreen() {
+function SobreScreen({ navigation }) {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>Página Sobre</Text>
+    <SafeAreaView style={styles.sobreContainer} edges={['bottom', 'left', 'right']}>
+      <View style= {{ flex: 1, padding: 20 }}>
+        <Text style={styles.sobreTitle}>Sobre</Text>
+        <Image 
+          source={require('./assets/newspaper.png')}
+          style={styles.sobreImage}
+          resizeMode="contain"
+          accessibilityLabel="Ilustração de um jornal"
+        />
+        <Text style={styles.sobreDescription}>
+          Esse é o Mini App de Notícias.
+          Aqui eu pratiquei diferentes tipos de navegação com
+          React Native:
+          - Drawer (raiz)
+          - Tabs (Tecnologia/Esportes)
+          - Stacks (Lista => Detalhes)
+        </Text>
+        <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+          <Button
+            title='Voltar'
+            onPress={() => navigation.navigate('Notícias')}
+          />
+        </View>
+      </View>
     </SafeAreaView>
   );
 }
@@ -144,4 +166,26 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  sobreContainer: { 
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  sobreTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  sobreImage: {
+    width: '80%', 
+    height: 150, 
+    alignSelf: 'center',
+    marginBottom: 20,
+  },
+  sobreDescription: {
+    fontSize: 16,
+    textAlign: 'center',
+    lineHeight: 24,
+    color: '#333',
+  }
 });
