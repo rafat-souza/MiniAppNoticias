@@ -7,9 +7,11 @@ import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '
 import { NavigationContainer } from '@react-navigation/native'; 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome, FontAwesome6, MaterialIcons, AntDesign } from '@expo/vector-icons';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import TecnologiaScreen from './src/tecnologia';
 import EsportesScreen from './src/esportes';
+import Detalhes from './src/Detalhes';
 
 function SobreScreen() {
   return (
@@ -36,6 +38,39 @@ function CustomDrawerContent(props) {
 
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+function TecnologiaStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Tecnologia"
+        component={TecnologiaScreen}
+        options ={{ title: 'Tecnologia' }}
+      />
+      <Stack.Screen
+        name="DetalheNoticia"
+        component={Detalhes}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function EsportesStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Esportes"
+        component={EsportesScreen}
+        options ={{ title: 'Esportes' }}
+      />
+      <Stack.Screen
+        name="DetalheNoticia"
+        component={Detalhes}
+      />
+    </Stack.Navigator>
+  );
+}
 
 function NoticiasTabNavigator() {
   return (
@@ -44,7 +79,7 @@ function NoticiasTabNavigator() {
     >
       <Tab.Screen 
         name="Tecnologia" 
-        component={TecnologiaScreen} 
+        component={TecnologiaStack} 
         options={{
           tabBarIcon: ({color, size}) => (<FontAwesome6 name="computer" size={size} color={color}/>)
         }} 
@@ -52,12 +87,11 @@ function NoticiasTabNavigator() {
 
       <Tab.Screen 
         name="Esportes" 
-        component={EsportesScreen}
+        component={EsportesStack}
         options={{
           tabBarIcon: ({color, size}) => (<MaterialIcons name="sports-football" size={size} color={color}/>)
         }}
       />
-      
     </Tab.Navigator>
   );
 }
